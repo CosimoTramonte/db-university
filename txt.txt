@@ -14,7 +14,7 @@ WHERE `cfu` > 10;
 
 SELECT * 
 FROM `students` 
-WHERE DATEDIFF(NOW(),`date_of_birth`)/365.25 > 30;
+WHERE TIMESTAMPDIFF(YEAR,`date_of_birth`,CURDATE()) > 30;
 
 4.
 

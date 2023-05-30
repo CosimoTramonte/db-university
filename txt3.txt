@@ -1,0 +1,66 @@
+1.
+
+SELECT `students`.`id`,`students`.`name`,`students`.`surname`,`students`.`registration_number` , `degrees`.`name`
+FROM `degrees` 
+INNER JOIN `students`
+ON `degrees`.`id` = `students`.`degree_id`
+WHERE `degrees`.`name` = 'Corso di Laurea in Economia';
+
+2.
+
+SELECT `departments`.`name`, `degrees`.`id`,`degrees`.`name`,`degrees`.`level`,`degrees`.`address`
+FROM `departments` 
+INNER JOIN `degrees`
+ON `departments`.`id` = `degrees`.`department_id`
+WHERE `departments`.`name` = 'Dipartimento di Neuroscienze'
+AND `degrees`.`level` = 'magistrale';
+
+3.
+
+SELECT `courses`.`name`, `courses`.`period`, `courses`.`cfu`, `teachers`.`name`, `teachers`.`surname`, `teachers`.`phone`, `teachers`.`email`
+FROM `teachers`
+JOIN `course_teacher` 
+ON `teachers`.`id` = `course_teacher`.`teacher_id`
+JOIN `courses` 
+ON `course_teacher`.`course_id` = `courses`.`id`
+WHERE `teachers`.`id` = 44;
+
+4.
+
+SELECT `students`.`id`,`students`.`name`,`students`.`surname`,`students`.`registration_number`, `degrees`.`name`, `degrees`.`level`, `departments`.`name`
+FROM `departments`
+JOIN `degrees` 
+ON `departments`.`id` = `degrees`.`department_id`
+JOIN `students` 
+ON `degrees`.`id` = `students`.`degree_id`
+ORDER BY `students`.`name`,`students`.`surname`;
+
+5.
+
+SELECT `degrees`.`name`, `degrees`.`level`, `courses`.`name`, `courses`.`period`, `courses`.`cfu`, `teachers`.`id`, `teachers`.`name`, `teachers`.`surname`
+FROM `degrees`
+JOIN `courses` 
+ON `degrees`.`id` = `courses`.`degree_id`
+JOIN `course_teacher` 
+ON `courses`.`id` = `course_teacher`.`course_id`
+JOIN `teachers`
+ON `teachers`.`id` = `course_teacher`.`teacher_id`
+
+6.
+
+SELECT DISTINCT `departments`.`name`, `teachers`.`id`, `teachers`.`name`, `teachers`.`surname`
+FROM `departments`
+JOIN `degrees` 
+ON `departments`.`id` = `degrees`.`department_id`
+JOIN `courses` 
+ON `degrees`.`id` = `courses`.`degree_id`
+JOIN `course_teacher` 
+ON `courses`.`id` = `course_teacher`.`course_id`
+JOIN `teachers`
+ON `teachers`.`id` = `course_teacher`.`teacher_id`
+WHERE `departments`.`name` = 'Dipartimento di Matematica'
+
+7.
+
+
+

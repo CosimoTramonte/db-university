@@ -8,7 +8,8 @@ GROUP BY `different_year`;
 
 SELECT COUNT(*) AS `teachers_numbers`, `office_address`  
 FROM `teachers` 
-GROUP BY `office_address`;
+GROUP BY `office_address`
+ORDER BY `teachers_numbers`, `office_address`;
 
 3.
 
